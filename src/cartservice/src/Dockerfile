@@ -12,14 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# The SDK runs natively on the build host and cross-publishes for the target
+# architecture, so keep TARGETARCH aligned with the deploy target.
+ARG BUILDPLATFORM=linux/amd64
+
 # https://mcr.microsoft.com/product/dotnet/sdk
-FROM mcr.microsoft.com/dotnet/sdk:10.0.100-noble@sha256:c7445f141c04f1a6b454181bd098dcfa606c61ba0bd213d0a702489e5bd4cd71 AS builder
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:10.0.100-noble@sha256:c7445f141c04f1a6b454181bd098dcfa606c61ba0bd213d0a702489e5bd4cd71 AS builder
+ARG TARGETARCH=arm64
 WORKDIR /app
 COPY cartservice.csproj .
-RUN dotnet restore cartservice.csproj
+RUN dotnet restore cartservice.csproj \
+    -a $TARGETARCH
 COPY . .
 RUN dotnet publish cartservice.csproj \
     -p:PublishSingleFile=true \
+    -a $TARGETARCH \
     --self-contained true \
     -p:PublishTrimmed=true \
     -p:TrimMode=full \
