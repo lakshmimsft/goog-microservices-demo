@@ -49,7 +49,7 @@ resource adserviceImage 'Radius.Compute/containerImages@2025-08-01-preview' = {
     application: googApp.id
     codeReference: 'src/adservice/Dockerfile'
     build: {
-      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/adservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d'
+      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/adservice?ref=98cc4bf72f265ce81c02e1b829cf91b0c3245680'
       platforms: [
         'linux/amd64'
       ]
@@ -67,7 +67,7 @@ resource cartserviceImage 'Radius.Compute/containerImages@2025-08-01-preview' = 
     application: googApp.id
     codeReference: 'src/cartservice/src/Dockerfile'
     build: {
-      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/cartservice/src?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d'
+      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/cartservice/src?ref=98cc4bf72f265ce81c02e1b829cf91b0c3245680'
       platforms: [
         'linux/amd64'
       ]
@@ -85,7 +85,7 @@ resource checkoutserviceImage 'Radius.Compute/containerImages@2025-08-01-preview
     application: googApp.id
     codeReference: 'src/checkoutservice/Dockerfile'
     build: {
-      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/checkoutservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d'
+      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/checkoutservice?ref=98cc4bf72f265ce81c02e1b829cf91b0c3245680'
       platforms: [
         'linux/amd64'
       ]
@@ -103,7 +103,7 @@ resource currencyserviceImage 'Radius.Compute/containerImages@2025-08-01-preview
     application: googApp.id
     codeReference: 'src/currencyservice/Dockerfile'
     build: {
-      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/currencyservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d'
+      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/currencyservice?ref=98cc4bf72f265ce81c02e1b829cf91b0c3245680'
       platforms: [
         'linux/amd64'
       ]
@@ -121,7 +121,7 @@ resource emailserviceImage 'Radius.Compute/containerImages@2025-08-01-preview' =
     application: googApp.id
     codeReference: 'src/emailservice/Dockerfile'
     build: {
-      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/emailservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d'
+      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/emailservice?ref=98cc4bf72f265ce81c02e1b829cf91b0c3245680'
       platforms: [
         'linux/amd64'
       ]
@@ -139,7 +139,7 @@ resource frontendImage 'Radius.Compute/containerImages@2025-08-01-preview' = {
     application: googApp.id
     codeReference: 'src/frontend/Dockerfile'
     build: {
-      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/frontend?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d'
+      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/frontend?ref=98cc4bf72f265ce81c02e1b829cf91b0c3245680'
       platforms: [
         'linux/amd64'
       ]
@@ -157,7 +157,7 @@ resource loadgeneratorImage 'Radius.Compute/containerImages@2025-08-01-preview' 
     application: googApp.id
     codeReference: 'src/loadgenerator/Dockerfile'
     build: {
-      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/loadgenerator?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d'
+      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/loadgenerator?ref=98cc4bf72f265ce81c02e1b829cf91b0c3245680'
       platforms: [
         'linux/amd64'
       ]
@@ -175,7 +175,7 @@ resource paymentserviceImage 'Radius.Compute/containerImages@2025-08-01-preview'
     application: googApp.id
     codeReference: 'src/paymentservice/Dockerfile'
     build: {
-      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/paymentservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d'
+      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/paymentservice?ref=98cc4bf72f265ce81c02e1b829cf91b0c3245680'
       platforms: [
         'linux/amd64'
       ]
@@ -193,7 +193,7 @@ resource productcatalogserviceImage 'Radius.Compute/containerImages@2025-08-01-p
     application: googApp.id
     codeReference: 'src/productcatalogservice/Dockerfile'
     build: {
-      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/productcatalogservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d'
+      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/productcatalogservice?ref=98cc4bf72f265ce81c02e1b829cf91b0c3245680'
       platforms: [
         'linux/amd64'
       ]
@@ -211,7 +211,7 @@ resource recommendationserviceImage 'Radius.Compute/containerImages@2025-08-01-p
     application: googApp.id
     codeReference: 'src/recommendationservice/Dockerfile'
     build: {
-      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/recommendationservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d'
+      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/recommendationservice?ref=98cc4bf72f265ce81c02e1b829cf91b0c3245680'
       platforms: [
         'linux/amd64'
       ]
@@ -229,7 +229,7 @@ resource shippingserviceImage 'Radius.Compute/containerImages@2025-08-01-preview
     application: googApp.id
     codeReference: 'src/shippingservice/Dockerfile'
     build: {
-      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/shippingservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d'
+      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/shippingservice?ref=98cc4bf72f265ce81c02e1b829cf91b0c3245680'
       platforms: [
         'linux/amd64'
       ]
