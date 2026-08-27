@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using cartservice.cartstore;
 using cartservice.services;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
+using StackExchange.Redis;
 
 namespace cartservice
 {
@@ -35,7 +36,14 @@ namespace cartservice
             {
                 services.AddStackExchangeRedisCache(options =>
                 {
-                    options.Configuration = redisAddress;
+                    if (TryParseRedisUrl(redisAddress, out ConfigurationOptions parsed))
+                    {
+                        options.ConfigurationOptions = parsed;
+                    }
+                    else
+                    {
+                        options.Configuration = redisAddress;
+                    }
                 });
                 services.AddSingleton<ICartStore, RedisCartStore>();
             }
@@ -57,6 +65,106 @@ namespace cartservice
 
 
             services.AddGrpc();
+        }
+
+        // REDIS_ADDR is normally a StackExchange.Redis configuration string such as
+        // "host:port,password=...,ssl=True". Managed Redis offerings instead hand out
+        // a connection URL ("rediss://:password@host:port"), which ConfigurationOptions
+        // does not understand, so translate that form here. The URL is parsed by hand
+        // rather than with System.Uri because access keys are base64 and may contain
+        // characters that Uri treats as authority delimiters.
+        private static bool TryParseRedisUrl(string value, out ConfigurationOptions parsed)
+        {
+            parsed = null;
+
+            bool useSsl;
+            string remainder;
+            if (value.StartsWith("rediss://", StringComparison.OrdinalIgnoreCase))
+            {
+                useSsl = true;
+                remainder = value.Substring("rediss://".Length);
+            }
+            else if (value.StartsWith("redis://", StringComparison.OrdinalIgnoreCase))
+            {
+                useSsl = false;
+                remainder = value.Substring("redis://".Length);
+            }
+            else
+            {
+                return false;
+            }
+
+            // Split credentials from the host on the last '@' so a password
+            // containing '@' does not truncate the host.
+            string credentials = null;
+            int at = remainder.LastIndexOf('@');
+            if (at >= 0)
+            {
+                credentials = remainder.Substring(0, at);
+                remainder = remainder.Substring(at + 1);
+            }
+
+            // Drop any trailing database path or query string.
+            int pathStart = remainder.IndexOfAny(new[] { '/', '?' });
+            if (pathStart >= 0)
+            {
+                remainder = remainder.Substring(0, pathStart);
+            }
+
+            if (string.IsNullOrEmpty(remainder))
+            {
+                return false;
+            }
+
+            string host = remainder;
+            int port = useSsl ? 6380 : 6379;
+            int portSeparator = remainder.LastIndexOf(':');
+            if (portSeparator >= 0)
+            {
+                host = remainder.Substring(0, portSeparator);
+                if (!int.TryParse(remainder.Substring(portSeparator + 1), out port))
+                {
+                    return false;
+                }
+            }
+
+            if (string.IsNullOrEmpty(host))
+            {
+                return false;
+            }
+
+            parsed = new ConfigurationOptions
+            {
+                Ssl = useSsl,
+                AbortOnConnectFail = false,
+            };
+            parsed.EndPoints.Add(host, port);
+
+            if (useSsl)
+            {
+                parsed.SslHost = host;
+            }
+
+            if (!string.IsNullOrEmpty(credentials))
+            {
+                int passwordSeparator = credentials.IndexOf(':');
+                if (passwordSeparator >= 0)
+                {
+                    string user = credentials.Substring(0, passwordSeparator);
+                    if (!string.IsNullOrEmpty(user))
+                    {
+                        parsed.User = Uri.UnescapeDataString(user);
+                    }
+
+                    parsed.Password = Uri.UnescapeDataString(credentials.Substring(passwordSeparator + 1));
+                }
+                else
+                {
+                    parsed.Password = Uri.UnescapeDataString(credentials);
+                }
+            }
+
+            return true;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
