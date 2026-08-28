@@ -12,16 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM python:3.14.7-alpine@sha256:05b2b8b732ecd268fee8727a369f936f022d1321b59befd13c30ede22769dcdc AS base
+FROM python:3.14.7-slim AS base
 
 FROM base AS builder
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-RUN apk update \
-    && apk add --no-cache g++ linux-headers \
-    && rm -rf /var/cache/apk/*
+# psutil publishes a prebuilt aarch64 wheel for glibc but not for musl, so on an
+# Alpine base it was compiled from source. That compile runs under QEMU emulation
+# in the image build and gcc segfaults partway through it. A glibc base installs
+# the wheel instead of building it.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends gcc g++ \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
 
@@ -31,10 +35,6 @@ FROM base
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-
-RUN apk update \
-    && apk add --no-cache libstdc++ \
-    && rm -rf /var/cache/apk/*
 
 WORKDIR /loadgen
 
