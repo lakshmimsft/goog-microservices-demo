@@ -49,7 +49,7 @@ resource adserviceImage 'Radius.Compute/containerImages@2025-08-01-preview' = {
     application: googApp.id
     codeReference: 'src/adservice/Dockerfile'
     build: {
-      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/adservice?ref=a173b01624f562f52f649d2f3152a68db533d689'
+      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/adservice?ref=d2c2560ad65cf79d4eeaa7ddff88ee3f5536e2db'
       platforms: [
         'linux/arm64'
       ]
