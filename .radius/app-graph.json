@@ -56,7 +56,7 @@
           "kind": "Dependency"
         }
       ],
-      "diffHash": "sha256:3256c83dfdd38e3c2ae95939b15e58938acc0dba829ea9c78c4b1f42c43d8332",
+      "diffHash": "sha256:d91d56560965fc6200327853ec033a394e3663c2a0d032d690072a283f76fd03",
       "iconHash": "48a16548bd45c8c45db8c975308cf587a76a4c1b18d88bce9ced7d5b78095edf",
       "id": "/planes/radius/local/resourcegroups/default/providers/Radius.Compute/containerImages/adservice-image",
       "name": "adservice-image",
@@ -65,9 +65,9 @@
         "application": "[reference('googApp').id]",
         "build": {
           "platforms": [
-            "linux/amd64"
+            "linux/arm64"
           ],
-          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/adservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d"
+          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/adservice?ref=d97df913a78ce1c7358189032dca3d2d5de28180"
         },
         "codeReference": "src/adservice/Dockerfile",
         "environment": "[parameters('environment')]"
@@ -98,7 +98,7 @@
           "kind": "Dependency"
         }
       ],
-      "diffHash": "sha256:71ea61734b3dc46b05aa18855be7b2aeb4f0628e06f0bcf14434559d62ec1c50",
+      "diffHash": "sha256:2e9e35f4874b2457bac863c9c40675bd2042c3d323a8a429a14ff442a7663e9c",
       "iconHash": "b15466644c2efcfae34f31c914d0926d10ac1fe641d730f5b0f25955f2b9b5a9",
       "id": "/planes/radius/local/resourcegroups/default/providers/Radius.Compute/containers/cartservice",
       "name": "cartservice",
@@ -134,7 +134,7 @@
           "kind": "Dependency"
         }
       ],
-      "diffHash": "sha256:64ac699b38b25498b0e2a80b8cd44409338ca94c952ad71ec6953893eff99da0",
+      "diffHash": "sha256:7e96632ef28343a9007a75f84c4b6bb90b4205bfb3330d6cf209987fce5ec4d8",
       "iconHash": "48a16548bd45c8c45db8c975308cf587a76a4c1b18d88bce9ced7d5b78095edf",
       "id": "/planes/radius/local/resourcegroups/default/providers/Radius.Compute/containerImages/cartservice-image",
       "name": "cartservice-image",
@@ -143,9 +143,9 @@
         "application": "[reference('googApp').id]",
         "build": {
           "platforms": [
-            "linux/amd64"
+            "linux/arm64"
           ],
-          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/cartservice/src?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d"
+          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/cartservice/src?ref=a173b01624f562f52f649d2f3152a68db533d689"
         },
         "codeReference": "src/cartservice/src/Dockerfile",
         "environment": "[parameters('environment')]"
@@ -232,7 +232,7 @@
           "kind": "Dependency"
         }
       ],
-      "diffHash": "sha256:003dcda56aa647e46f19d79a9cf1253f1120484e81ed01354e690fa768975d17",
+      "diffHash": "sha256:3fafed71daa9a1b7a6634d9c48ca41dffaee8c97d502e96f178f8c7c17e8d34f",
       "iconHash": "48a16548bd45c8c45db8c975308cf587a76a4c1b18d88bce9ced7d5b78095edf",
       "id": "/planes/radius/local/resourcegroups/default/providers/Radius.Compute/containerImages/checkoutservice-image",
       "name": "checkoutservice-image",
@@ -241,9 +241,9 @@
         "application": "[reference('googApp').id]",
         "build": {
           "platforms": [
-            "linux/amd64"
+            "linux/arm64"
           ],
-          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/checkoutservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d"
+          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/checkoutservice?ref=a173b01624f562f52f649d2f3152a68db533d689"
         },
         "codeReference": "src/checkoutservice/Dockerfile",
         "environment": "[parameters('environment')]"
@@ -305,7 +305,7 @@
           "kind": "Dependency"
         }
       ],
-      "diffHash": "sha256:dadcc1bb4c1191ea7e7642ed00e4347abc25fa277a06c71295079f5817089da5",
+      "diffHash": "sha256:d61d85cee888a16c5e3c6ac4e45f1ef4cdbf812f4b5accfa08daa02c06c07f2d",
       "iconHash": "48a16548bd45c8c45db8c975308cf587a76a4c1b18d88bce9ced7d5b78095edf",
       "id": "/planes/radius/local/resourcegroups/default/providers/Radius.Compute/containerImages/currencyservice-image",
       "name": "currencyservice-image",
@@ -314,9 +314,9 @@
         "application": "[reference('googApp').id]",
         "build": {
           "platforms": [
-            "linux/amd64"
+            "linux/arm64"
           ],
-          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/currencyservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d"
+          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/currencyservice?ref=a173b01624f562f52f649d2f3152a68db533d689"
         },
         "codeReference": "src/currencyservice/Dockerfile",
         "environment": "[parameters('environment')]"
@@ -373,7 +373,7 @@
           "kind": "Dependency"
         }
       ],
-      "diffHash": "sha256:71fcebdc21de762c406a4924103c1f569d0088571c7b1a1a3d28941e856cd4d2",
+      "diffHash": "sha256:8060e154f13bc3e2602dd2515d064163a32c677c098671a06ee21a4c3719cbaa",
       "iconHash": "48a16548bd45c8c45db8c975308cf587a76a4c1b18d88bce9ced7d5b78095edf",
       "id": "/planes/radius/local/resourcegroups/default/providers/Radius.Compute/containerImages/emailservice-image",
       "name": "emailservice-image",
@@ -382,9 +382,9 @@
         "application": "[reference('googApp').id]",
         "build": {
           "platforms": [
-            "linux/amd64"
+            "linux/arm64"
           ],
-          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/emailservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d"
+          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/emailservice?ref=a173b01624f562f52f649d2f3152a68db533d689"
         },
         "codeReference": "src/emailservice/Dockerfile",
         "environment": "[parameters('environment')]"
@@ -481,7 +481,7 @@
           "kind": "Dependency"
         }
       ],
-      "diffHash": "sha256:74bfc94f38527e74c61ad52441a66120c4a8b0ed5928c5a105dc72742331aa02",
+      "diffHash": "sha256:de29c98dfd76cf79f983c63545bf36d64360035ed195a2035c21e49e79d05a8a",
       "iconHash": "48a16548bd45c8c45db8c975308cf587a76a4c1b18d88bce9ced7d5b78095edf",
       "id": "/planes/radius/local/resourcegroups/default/providers/Radius.Compute/containerImages/frontend-image",
       "name": "frontend-image",
@@ -490,9 +490,9 @@
         "application": "[reference('googApp').id]",
         "build": {
           "platforms": [
-            "linux/amd64"
+            "linux/arm64"
           ],
-          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/frontend?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d"
+          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/frontend?ref=a173b01624f562f52f649d2f3152a68db533d689"
         },
         "codeReference": "src/frontend/Dockerfile",
         "environment": "[parameters('environment')]"
@@ -580,7 +580,7 @@
           "kind": "Dependency"
         }
       ],
-      "diffHash": "sha256:1c6e233ede2a4fa69651d4a5b96a07d752b8435c6ab06ba873f5f1657d6d8c5f",
+      "diffHash": "sha256:41245ec9d827d5dac3535855cd4d259fe1a3a29c1f5c527e5a9274fa9c080004",
       "iconHash": "48a16548bd45c8c45db8c975308cf587a76a4c1b18d88bce9ced7d5b78095edf",
       "id": "/planes/radius/local/resourcegroups/default/providers/Radius.Compute/containerImages/loadgenerator-image",
       "name": "loadgenerator-image",
@@ -589,9 +589,9 @@
         "application": "[reference('googApp').id]",
         "build": {
           "platforms": [
-            "linux/amd64"
+            "linux/arm64"
           ],
-          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/loadgenerator?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d"
+          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/loadgenerator?ref=a173b01624f562f52f649d2f3152a68db533d689"
         },
         "codeReference": "src/loadgenerator/Dockerfile",
         "environment": "[parameters('environment')]"
@@ -648,7 +648,7 @@
           "kind": "Dependency"
         }
       ],
-      "diffHash": "sha256:011d1d3078a7bded75044f05d08a0871240e88972cc4842814f09d37455d90ee",
+      "diffHash": "sha256:11a511f9fb606a15e010fb96f6f4520278bfa4caf9ef397684749e5e4391edb3",
       "iconHash": "48a16548bd45c8c45db8c975308cf587a76a4c1b18d88bce9ced7d5b78095edf",
       "id": "/planes/radius/local/resourcegroups/default/providers/Radius.Compute/containerImages/paymentservice-image",
       "name": "paymentservice-image",
@@ -657,9 +657,9 @@
         "application": "[reference('googApp').id]",
         "build": {
           "platforms": [
-            "linux/amd64"
+            "linux/arm64"
           ],
-          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/paymentservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d"
+          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/paymentservice?ref=a173b01624f562f52f649d2f3152a68db533d689"
         },
         "codeReference": "src/paymentservice/Dockerfile",
         "environment": "[parameters('environment')]"
@@ -726,7 +726,7 @@
           "kind": "Dependency"
         }
       ],
-      "diffHash": "sha256:a2631b3c1f9c63a3e54a3b936ab1454d7b002d3a7235f39e1e32a201e80dfe75",
+      "diffHash": "sha256:ef5915549c40324a2b436789f81a5b670e5608a1ca5325dc3b825641b766a897",
       "iconHash": "48a16548bd45c8c45db8c975308cf587a76a4c1b18d88bce9ced7d5b78095edf",
       "id": "/planes/radius/local/resourcegroups/default/providers/Radius.Compute/containerImages/productcatalogservice-image",
       "name": "productcatalogservice-image",
@@ -735,9 +735,9 @@
         "application": "[reference('googApp').id]",
         "build": {
           "platforms": [
-            "linux/amd64"
+            "linux/arm64"
           ],
-          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/productcatalogservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d"
+          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/productcatalogservice?ref=a173b01624f562f52f649d2f3152a68db533d689"
         },
         "codeReference": "src/productcatalogservice/Dockerfile",
         "environment": "[parameters('environment')]"
@@ -799,7 +799,7 @@
           "kind": "Dependency"
         }
       ],
-      "diffHash": "sha256:f04277b5310a9abd1adce07016aafc9545182b6558e49a2de07b6ffbc8ff91cd",
+      "diffHash": "sha256:3fd9c33534049028bbdf4dfe08a369a1e0e7d4d9c1560e182cc9d38b98dc1e3d",
       "iconHash": "48a16548bd45c8c45db8c975308cf587a76a4c1b18d88bce9ced7d5b78095edf",
       "id": "/planes/radius/local/resourcegroups/default/providers/Radius.Compute/containerImages/recommendationservice-image",
       "name": "recommendationservice-image",
@@ -808,9 +808,9 @@
         "application": "[reference('googApp').id]",
         "build": {
           "platforms": [
-            "linux/amd64"
+            "linux/arm64"
           ],
-          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/recommendationservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d"
+          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/recommendationservice?ref=a173b01624f562f52f649d2f3152a68db533d689"
         },
         "codeReference": "src/recommendationservice/Dockerfile",
         "environment": "[parameters('environment')]"
@@ -826,14 +826,14 @@
           "kind": "Dependency"
         }
       ],
-      "diffHash": "sha256:f4f6e4c3ad8c3a579789197a631c035c47d19bbecccbe1ae5dfa67241cc492bb",
+      "diffHash": "sha256:d5fd8aa585e3e431bba7cd2d5641684e338d5ee9e1a881be33c65c61e7a77e9f",
       "iconHash": "88900dfb4dc01d836935bf51fe93d822733eb2656431294784a082b40cd568a9",
       "id": "/planes/radius/local/resourcegroups/default/providers/Radius.Data/redisCaches/redis",
       "name": "redis",
       "outputResources": [],
       "properties": {
         "application": "[reference('googApp').id]",
-        "codeReference": "src/cartservice/src/Startup.cs#L36",
+        "codeReference": "src/cartservice/src/Startup.cs#L37",
         "environment": "[parameters('environment')]",
         "size": "S"
       },
@@ -971,7 +971,7 @@
           "kind": "Dependency"
         }
       ],
-      "diffHash": "sha256:d46f5de229caff69f48a03bb53f5b8b601ff53d9400007d6f9f13b124a1f8273",
+      "diffHash": "sha256:7674f8cd72fda6445719990c91e5668f522244f476f49c8675950334c9e953c5",
       "iconHash": "48a16548bd45c8c45db8c975308cf587a76a4c1b18d88bce9ced7d5b78095edf",
       "id": "/planes/radius/local/resourcegroups/default/providers/Radius.Compute/containerImages/shippingservice-image",
       "name": "shippingservice-image",
@@ -980,9 +980,9 @@
         "application": "[reference('googApp').id]",
         "build": {
           "platforms": [
-            "linux/amd64"
+            "linux/arm64"
           ],
-          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/shippingservice?ref=72ba613a05f7fcee51cf1d0badff401b6ae7074d"
+          "source": "git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/shippingservice?ref=a173b01624f562f52f649d2f3152a68db533d689"
         },
         "codeReference": "src/shippingservice/Dockerfile",
         "environment": "[parameters('environment')]"

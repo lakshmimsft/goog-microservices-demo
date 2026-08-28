@@ -157,7 +157,7 @@ resource loadgeneratorImage 'Radius.Compute/containerImages@2025-08-01-preview' 
     application: googApp.id
     codeReference: 'src/loadgenerator/Dockerfile'
     build: {
-      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/loadgenerator?ref=a173b01624f562f52f649d2f3152a68db533d689'
+      source: 'git::https://github.com/lakshmimsft/goog-microservices-demo.git//src/loadgenerator?ref=f4a249aba33215686d8f06fee274994791439158'
       platforms: [
         'linux/arm64'
       ]
