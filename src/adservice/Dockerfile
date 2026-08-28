@@ -26,7 +26,7 @@ RUN ./gradlew downloadRepos
 
 COPY . .
 RUN chmod +x gradlew
-RUN ./gradlew installDist
+RUN ./gradlew clean installDist
 
 FROM eclipse-temurin:25.0.3_9-jre-alpine@sha256:28db6fdf60e38945e43d840c0333aeaec66c15943070104f7586fd3c9d1665b0
 
