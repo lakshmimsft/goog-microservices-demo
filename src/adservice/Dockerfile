@@ -19,21 +19,19 @@ FROM --platform=$BUILDPLATFORM eclipse-temurin:24.0.2_12-jdk-noble@sha256:dacac8
 
 WORKDIR /app
 
-COPY ["build.gradle", "settings.gradle", "gradlew", "./"]
-COPY gradle gradle
-RUN chmod +x gradlew
-RUN ./gradlew downloadRepos
-
+# Copy the whole build context in one step. Splitting this into an early copy of
+# build.gradle plus a later copy of the sources let the image build reuse a
+# build.gradle layer and a source layer from different commits, which produced a
+# build that compiled nothing and still reported success.
 COPY . .
 RUN chmod +x gradlew
+RUN ./gradlew downloadRepos
 RUN ./gradlew clean installDist; \
     jar tf build/install/hipstershop/lib/hipstershop-0.1.0-SNAPSHOT.jar 2>/dev/null \
       | grep -qx 'hipstershop/AdService.class' \
     || { echo "FATAL: AdService.class missing from the built jar" >&2; \
-         echo "--- /app tree (depth 3, excluding gradle/ and build/) ---" >&2; \
-         find /app -maxdepth 3 -not -path '/app/gradle/*' -not -path '/app/build/*' | sort >&2; \
-         echo "--- source dirs Gradle resolves ---" >&2; \
-         ./gradlew -q --console=plain sourceSetPaths >&2; \
+         echo "--- /app tree (depth 4, excluding gradle/ and build/) ---" >&2; \
+         find /app -maxdepth 4 -not -path '/app/gradle/*' -not -path '/app/build/*' | sort >&2; \
          exit 1; }
 
 FROM eclipse-temurin:25.0.3_9-jre-alpine@sha256:28db6fdf60e38945e43d840c0333aeaec66c15943070104f7586fd3c9d1665b0
