@@ -25,10 +25,13 @@ RUN chmod +x gradlew
 RUN ./gradlew downloadRepos
 
 COPY . .
-RUN test -f javasrc/main/java/hipstershop/AdService.java \
-    || { echo "FATAL: build context is missing javasrc/main/java" >&2; \
-         find . -maxdepth 3 -not -path './gradle/*' >&2; exit 1; }
 RUN chmod +x gradlew
+RUN echo "=== context: files Gradle should compile ===" \
+    && find javasrc -type f | sort \
+    && echo "=== build.gradle source set config in this image ===" \
+    && sed -n '/^sourceSets/,/^}/p' build.gradle \
+    && echo "=== source dirs Gradle actually resolves ===" \
+    && ./gradlew -q --console=plain sourceSetPaths
 RUN ./gradlew clean installDist
 RUN jar tf build/install/hipstershop/lib/hipstershop-0.1.0-SNAPSHOT.jar \
       | grep -qx 'hipstershop/AdService.class' \
