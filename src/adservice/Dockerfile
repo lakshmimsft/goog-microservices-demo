@@ -25,6 +25,9 @@ RUN chmod +x gradlew
 RUN ./gradlew downloadRepos
 
 COPY . .
+RUN test -f javasrc/main/java/hipstershop/AdService.java \
+    || { echo "FATAL: build context is missing javasrc/main/java" >&2; \
+         find . -maxdepth 3 -not -path './gradle/*' >&2; exit 1; }
 RUN chmod +x gradlew
 RUN ./gradlew clean installDist
 RUN jar tf build/install/hipstershop/lib/hipstershop-0.1.0-SNAPSHOT.jar \
