@@ -26,17 +26,15 @@ RUN ./gradlew downloadRepos
 
 COPY . .
 RUN chmod +x gradlew
-RUN echo "=== context: files Gradle should compile ===" \
-    && find javasrc -type f | sort \
-    && echo "=== build.gradle source set config in this image ===" \
-    && sed -n '/^sourceSets/,/^}/p' build.gradle \
-    && echo "=== source dirs Gradle actually resolves ===" \
-    && ./gradlew -q --console=plain sourceSetPaths
-RUN ./gradlew clean installDist
-RUN jar tf build/install/hipstershop/lib/hipstershop-0.1.0-SNAPSHOT.jar \
+RUN ./gradlew clean installDist; \
+    jar tf build/install/hipstershop/lib/hipstershop-0.1.0-SNAPSHOT.jar 2>/dev/null \
       | grep -qx 'hipstershop/AdService.class' \
-    || { echo "FATAL: AdService.class missing; compileJava produced no output" >&2; \
-         ls -lR build/classes build/generated 2>&1 >&2; exit 1; }
+    || { echo "FATAL: AdService.class missing from the built jar" >&2; \
+         echo "--- /app tree (depth 3, excluding gradle/ and build/) ---" >&2; \
+         find /app -maxdepth 3 -not -path '/app/gradle/*' -not -path '/app/build/*' | sort >&2; \
+         echo "--- source dirs Gradle resolves ---" >&2; \
+         ./gradlew -q --console=plain sourceSetPaths >&2; \
+         exit 1; }
 
 FROM eclipse-temurin:25.0.3_9-jre-alpine@sha256:28db6fdf60e38945e43d840c0333aeaec66c15943070104f7586fd3c9d1665b0
 
