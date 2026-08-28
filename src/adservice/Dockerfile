@@ -27,6 +27,10 @@ RUN ./gradlew downloadRepos
 COPY . .
 RUN chmod +x gradlew
 RUN ./gradlew clean installDist
+RUN jar tf build/install/hipstershop/lib/hipstershop-0.1.0-SNAPSHOT.jar \
+      | grep -qx 'hipstershop/AdService.class' \
+    || { echo "FATAL: AdService.class missing; compileJava produced no output" >&2; \
+         ls -lR build/classes build/generated 2>&1 >&2; exit 1; }
 
 FROM eclipse-temurin:25.0.3_9-jre-alpine@sha256:28db6fdf60e38945e43d840c0333aeaec66c15943070104f7586fd3c9d1665b0
 

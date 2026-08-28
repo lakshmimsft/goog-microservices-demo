@@ -74,6 +74,7 @@ googleJavaFormat {
 sourceSets {
     main {
         java {
+            srcDirs 'src/main/java'
             srcDirs 'hipstershop'
             srcDirs 'build/generated/source/proto/main/java/hipstershop'
             srcDirs 'build/generated/source/proto/main/grpc/hipstershop'
